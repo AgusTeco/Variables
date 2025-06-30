@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Códigos por Día</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-screen" class="login-container">
+        <h2>Ingresa tu Nombre de Usuario</h2>
+        <input type="text" id="username-input" placeholder="Tu nombre de usuario o legajo">
+        <button id="login-button">Ingresar</button>
+    </div>
+    <div id="main-app" class="container hidden">
+        <h1>Registro Mensual de Códigos</h1>
+
+        <div class="calendar-section">
+            <label>Selecciona el mes y año:</label>
+            <div id="month-selector-container">
+                <button id="prev-year-button" class="nav-button">&lt;&lt;</button>
+                <button id="prev-month-button" class="nav-button">&lt;</button>
+                <span id="current-month-year"></span>
+                <button id="next-month-button" class="nav-button">&gt;</button>
+                <button id="next-year-button" class="nav-button">&gt;&gt;</button>
+                <div id="month-grid">
+                    </div>
+            </div>
+            <div id="calendar"></div>
+        </div>
+
+        <div class="code-entry-section">
+            <h2>Día Seleccionado: <span id="selected-date">Ninguno</span></h2>
+
+            <div class="daily-inputs">
+                <label for="legajo-display">Legajo:</label>
+                <span id="legajo-display" class="display-value"></span> 
+                <label for="hora-ini-input">Hora Inicio:</label>
+                <input type="time" id="hora-ini-input">
+                <label for="hora-fin-input">Hora Fin:</label>
+                <input type="time" id="hora-fin-input">
+                <label for="importe-input">Importe:</label>
+                <input type="number" id="importe-input" step="0.01" placeholder="Ej: 100.50">
+            </div>
+
+            <div class="code-selection">
+                <h3>Códigos Disponibles:</h3>
+                <div id="code-options">
+                    </div>
+                <div class="add-new-code">
+                    <input type="text" id="new-code-input" placeholder="Nuevo Código (Ej: ARXXXX Descripción)">
+                    <button id="add-code-button">Agregar Nuevo Código</button>
+                </div>
+            </div>
+
+            <div class="selected-codes">
+                <h3>Códigos para el día <span id="codes-for-date-display"></span>:</h3>
+                <ul id="daily-codes-list">
+                    </ul>
+                <button id="save-daily-codes">Guardar Códigos del Día</button>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h2>Resumen Mensual</h2>
+            <button id="export-excel">Exportar a Excel (Mes Actual)</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
