@@ -99,21 +99,115 @@ h1, h2, h3 {
     transition: color 0.3s ease;
 }
 
-.nav-button {
-    background-color: #007bff;
-    color: white;
+/* --- START BUTTON STYLES IMPROVEMENT --- */
+button {
+    /* Base styles for all buttons */
+    padding: 12px 20px; /* Slightly more padding */
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 25px; /* More rounded */
     cursor: pointer;
     font-size: 1em;
-    margin: 0 5px;
-    transition: background-color 0.2s ease;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-transform: uppercase; /* Make text uppercase */
+    letter-spacing: 0.5px; /* Add slight letter spacing */
+    outline: none; /* Remove default outline */
+}
+
+button:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+button:active {
+    transform: translateY(0); /* Push effect on click */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Smaller shadow on click */
+}
+
+button:focus-visible { /* For keyboard navigation */
+    outline: 2px solid #0056b3; /* Clear outline for accessibility */
+    outline-offset: 2px;
+}
+
+/* Primary button style */
+.primary-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #0056b3;
+}
+
+/* Success button style (for save) */
+.success-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.success-button:hover {
+    background-color: #45a049;
+}
+
+/* Danger button style (for remove) */
+.danger-button {
+    background: none; /* Override base button background */
+    border: none;
+    color: #e74c3c;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: none; /* No shadow for remove button */
+    transition: color 0.2s ease, transform 0.2s ease;
+    text-transform: none; /* Keep text as is */
+    letter-spacing: normal;
+    font-weight: normal;
+}
+
+.danger-button:hover {
+    color: #c0392b;
+    transform: scale(1.1); /* Slight grow effect */
+}
+
+.danger-button:active {
+    transform: scale(0.95);
+}
+
+/* Specific button overrides */
+#add-code-button {
+    background-color: #007bff; /* Keep original blue */
+    color: white;
+}
+#add-code-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Navigation buttons (for month/year selector) */
+.nav-button {
+    padding: 8px 15px; /* Adjusted padding */
+    border-radius: 5px; /* Less rounded than primary buttons */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: none; /* Keep original case */
+    letter-spacing: normal;
 }
 
 .nav-button:hover {
     background-color: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
 }
+
+.nav-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+/* --- END BUTTON STYLES IMPROVEMENT --- */
+
 
 #month-grid {
     display: grid;
@@ -293,18 +387,20 @@ h1, h2, h3 {
     padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.3s ease, transform 0.2s ease; /* Add transform */
     font-size: 0.9em;
     color: #333;
 }
 
 .code-option:hover {
     background-color: #d0d0d0;
+    transform: translateY(-1px); /* Slight lift for code options */
 }
 
 .code-option.selected {
     background-color: #2196F3;
     color: white;
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.4); /* Shadow for selected code */
 }
 
 .add-new-code {
@@ -321,29 +417,6 @@ h1, h2, h3 {
     background-color: #fff;
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.2s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#add-code-button {
-    background-color: #007bff;
-}
-
-#add-code-button:hover {
-    background-color: #0056b3;
 }
 
 #daily-codes-list {
@@ -364,34 +437,10 @@ button:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#daily-codes-list li .remove-code {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    font-size: 1.2em;
-    cursor: pointer;
-    padding: 0;
-    transition: color 0.2s ease;
-}
-
-#daily-codes-list li .remove-code:hover {
-    color: #c0392b;
-}
-
-#save-daily-codes {
-    width: 100%;
-    margin-top: 20px;
-}
 
 /* Export Section Styles */
-#export-excel {
-    width: 100%;
-    background-color: #007bff;
-}
+/* No specific style needed here if using .primary-button directly */
 
-#export-excel:hover {
-    background-color: #0056b3;
-}
 
 /* Theme Toggle Styles */
 .theme-toggle-container {

@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const year = selectedMonthYearDate.getFullYear();
         const month = selectedMonthYearDate.getMonth(); // 0-indexed
 
-        // Actualiza la variable selectedMonth (formato YYYY-MM para la exportación)
+        // Actualiza la variable selectedMonth (formatoYYYY-MM para la exportación)
         const newSelectedMonthString = `${year}-${String(month + 1).padStart(2, '0')}`;
         // IMPORTANTE: actualiza la variable `selectedMonth` que usa `exportToExcel`
         // (Nota: `selectedMonth` no está definida globalmente, se usa dentro de `exportToExcel` con el objeto `selectedMonthYearDate`.)
@@ -417,17 +417,17 @@ document.addEventListener('DOMContentLoaded', () => {
             saveDailyData();
         }
 
-        // Usa selectedMonthYearDate para obtener el año y mes para el string YYYY-MM
+        // Usa selectedMonthYearDate para obtener el año y mes para el stringYYYY-MM
         const year = selectedMonthYearDate.getFullYear();
         const month = String(selectedMonthYearDate.getMonth() + 1).padStart(2, '0');
-        const monthForExport = `${year}-${month}`; // Este es el YYYY-MM que necesitamos
+        const monthForExport = `${year}-${month}`; // Este es elYYYY-MM que necesitamos
         
         const monthName = new Date(year, selectedMonthYearDate.getMonth(), 1).toLocaleString('es', { month: 'long', year: 'numeric' });
         
         const headers = [
             'Legajo',
-            'Fecha',
-            'Tipo',
+            'Fecha', // Changed from 'Fecha de la Carga'
+            'Tipo', // Changed from 'Tipo Codigo Elegido'
             'Motivo',
             'Hora Ini',
             'Hora Fin',
@@ -446,6 +446,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sortedDates.forEach(date => {
             const dayInfo = dailyData[date];
             if (dayInfo && dayInfo.codes && dayInfo.codes.length > 0) {
+                // Parse the date string into a Date object
+                const dateParts = date.split('-');
+                const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // DD-MM-YYYY
+
                 dayInfo.codes.forEach(fullCode => {
                     let codePart = fullCode;
                     let descriptionPart = '';
@@ -457,8 +461,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const row = {
                         'Legajo': dayInfo.legajo || '',
-                        'Fecha': date,
-                        'Tipo': codePart,
+                        'Fecha': formattedDate, // Use the DD-MM-YYYY format here
+                        'Tipo': codePart, // Now uses 'Tipo'
                         'Motivo': 'NA',
                         'Hora Ini': dayInfo.horaIni || '',
                         'Hora Fin': dayInfo.horaFin || '',
@@ -479,8 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         dataForMonth.sort((a, b) => {
-            const codeA = a['Tipo'].toUpperCase();
-            const codeB = b['Tipo'].toUpperCase();
+            const codeA = a['Tipo'].toUpperCase(); // Sort by the new 'Tipo' column
+            const codeB = b['Tipo'].toUpperCase(); // Sort by the new 'Tipo' column
             if (codeA < codeB) {
                 return -1;
             }

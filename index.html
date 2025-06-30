@@ -10,7 +10,7 @@
     <div id="login-screen" class="login-container">
         <h2>Ingresa tu Número de Legajo </h2>
         <input type="text" id="username-input" placeholder="Solo Números">
-        <button id="login-button">Ingresar</button>
+        <button id="login-button" class="primary-button">Ingresar</button> <!-- Added primary-button class -->
     </div>
     <div id="main-app" class="container hidden">
         <div class="theme-toggle-container">
@@ -53,7 +53,7 @@
                     </div>
                 <div class="add-new-code">
                     <input type="text" id="new-code-input" placeholder="Nuevo Código (Ej: ARXXXX Descripción)">
-                    <button id="add-code-button">Agregar Nuevo Código</button>
+                    <button id="add-code-button" class="primary-button">Agregar Nuevo Código</button> <!-- Added primary-button class -->
                 </div>
             </div>
 
@@ -61,13 +61,13 @@
                 <h3>Códigos para el día <span id="codes-for-date-display"></span>:</h3>
                 <ul id="daily-codes-list">
                     </ul>
-                <button id="save-daily-codes">Guardar Códigos del Día</button>
+                <button id="save-daily-codes" class="success-button">Guardar Códigos del Día</button> <!-- Added success-button class -->
             </div>
         </div>
 
         <div class="export-section">
             <h2>Resumen Mensual</h2>
-            <button id="export-excel">Exportar a Excel (Mes Actual)</button>
+            <button id="export-excel" class="primary-button">Exportar a Excel (Mes Actual)</button> <!-- Added primary-button class -->
         </div>
     </div>
 
