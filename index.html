@@ -10,14 +10,17 @@
     <div id="login-screen" class="login-container">
         <h2>Ingresa tu Número de Legajo </h2>
         <input type="text" id="username-input" placeholder="Solo Números">
-        <button id="login-button" class="primary-button">Ingresar</button> <!-- Added primary-button class -->
+        <button id="login-button" class="primary-button">Ingresar</button>
     </div>
     <div id="main-app" class="container hidden">
         <div class="theme-toggle-container">
             <label for="theme-toggle">Modo Oscuro</label>
             <input type="checkbox" id="theme-toggle">
         </div>
-        <h1>Registro Mensual de Variables</h1>
+        <div style="text-align: center;">
+            <img src="Teco.png" alt="Telecom Logo" style="height: 50px; display: block; margin: 0 auto 10px;">
+            <h1>Registro Mensual de Variables</h1>
+        </div>
 
         <div class="calendar-section">
             <label>Selecciona el mes y año:</label>
@@ -28,7 +31,7 @@
                 <button id="next-month-button" class="nav-button">&gt;</button>
                 <button id="next-year-button" class="nav-button">&gt;&gt;</button>
                 <div id="month-grid">
-                    </div>
+                </div>
             </div>
             <div id="calendar"></div>
         </div>
@@ -38,7 +41,7 @@
 
             <div class="daily-inputs">
                 <label for="legajo-display">Legajo:</label>
-                <span id="legajo-display" class="display-value"></span> 
+                <span id="legajo-display" class="display-value"></span>
                 <label for="hora-ini-input">Hora Inicio:</label>
                 <input type="time" id="hora-ini-input">
                 <label for="hora-fin-input">Hora Fin:</label>
@@ -50,24 +53,24 @@
             <div class="code-selection">
                 <h3>Variables Disponibles:</h3>
                 <div id="code-options">
-                    </div>
+                </div>
                 <div class="add-new-code">
                     <input type="text" id="new-code-input" placeholder="Nuevo Código (Ej: ARXXXX Descripción)">
-                    <button id="add-code-button" class="primary-button">Agregar Nueva Variable</button> <!-- Added primary-button class -->
+                    <button id="add-code-button" class="primary-button">Agregar Nueva Variable</button>
                 </div>
             </div>
 
             <div class="selected-codes">
                 <h3>Variables para el día <span id="codes-for-date-display"></span>:</h3>
                 <ul id="daily-codes-list">
-                    </ul>
-                <button id="save-daily-codes" class="success-button">Guardar Variables del Día</button> <!-- Added success-button class -->
+                </ul>
+                <button id="save-daily-codes" class="success-button">Guardar Variables del Día</button>
             </div>
         </div>
 
         <div class="export-section">
             <h2>Resumen Mensual</h2>
-            <button id="export-excel" class="primary-button">Exportar a Excel (Mes Actual)</button> <!-- Added primary-button class -->
+            <button id="export-excel" class="primary-button">Exportar a Excel (Mes Actual)</button>
         </div>
     </div>
 
