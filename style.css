@@ -199,6 +199,18 @@ h1, h2, h3 {
     color: white;
 }
 
+/* Nuevo estilo para fines de semana */
+.day.weekend {
+    background-color: #ffe0b2; /* Naranja claro */
+    border-color: #ffcc80;
+}
+
+.day.weekend.selected {
+    background-color: #ff9800; /* Naranja más oscuro cuando está seleccionado */
+    border-color: #f57c00;
+    color: white;
+}
+
 
 /* Code Entry Section Styles */
 .code-selection, .selected-codes {
