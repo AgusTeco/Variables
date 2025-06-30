@@ -457,8 +457,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const row = {
                         'Legajo': dayInfo.legajo || '',
-                        'Fecha de la Carga': date,
-                        'Tipo Codigo Elegido': codePart,
+                        'Fecha': date,
+                        'Tipo': codePart,
                         'Motivo': 'NA',
                         'Hora Ini': dayInfo.horaIni || '',
                         'Hora Fin': dayInfo.horaFin || '',
