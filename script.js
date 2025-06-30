@@ -426,8 +426,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const headers = [
             'Legajo',
-            'Fecha de la Carga',
-            'Tipo Codigo Elegido',
+            'Fecha',
+            'Tipo',
             'Motivo',
             'Hora Ini',
             'Hora Fin',
@@ -479,8 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         dataForMonth.sort((a, b) => {
-            const codeA = a['Tipo Codigo Elegido'].toUpperCase();
-            const codeB = b['Tipo Codigo Elegido'].toUpperCase();
+            const codeA = a['Tipo'].toUpperCase();
+            const codeB = b['Tipo'].toUpperCase();
             if (codeA < codeB) {
                 return -1;
             }
