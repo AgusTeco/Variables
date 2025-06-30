@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .container {
@@ -19,6 +20,8 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For theme toggle positioning */
 }
 
 /* Nuevos estilos para la pantalla de login */
@@ -31,11 +34,13 @@ body {
     width: 100%;
     max-width: 400px;
     margin-top: 100px; /* Centra un poco más verticalmente */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container h2 {
     margin-bottom: 25px;
     color: #333;
+    transition: color 0.3s ease;
 }
 
 .login-container input[type="text"] {
@@ -45,6 +50,9 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Estilo para ocultar elementos */
@@ -56,6 +64,7 @@ h1, h2, h3 {
     color: #333;
     text-align: center;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
 .calendar-section, .code-entry-section, .export-section {
@@ -63,6 +72,7 @@ h1, h2, h3 {
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- NUEVOS ESTILOS PARA EL SELECTOR DE MES --- */
@@ -76,6 +86,7 @@ h1, h2, h3 {
     background-color: #eaf6ff; /* Un azul claro para el fondo */
     border-radius: 5px;
     border: 1px solid #cceeff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #current-month-year {
@@ -85,6 +96,7 @@ h1, h2, h3 {
     color: #333;
     min-width: 80px; /* Para que el año tenga espacio y no salte */
     text-align: center;
+    transition: color 0.3s ease;
 }
 
 .nav-button {
@@ -118,9 +130,10 @@ h1, h2, h3 {
     border: 1px solid #eee;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.3s ease;
     font-size: 0.9em;
     font-weight: bold;
+    color: #333;
 }
 
 .month-cell:hover {
@@ -150,6 +163,8 @@ h1, h2, h3 {
     padding: 8px;
     background-color: #e2e2e2;
     border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333;
 }
 
 .day {
@@ -159,13 +174,14 @@ h1, h2, h3 {
     border: 1px solid #eee;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.3s ease, color 0.3s ease;
     min-height: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     font-size: 0.9em;
+    color: #333;
 }
 
 .day:hover {
@@ -182,6 +198,7 @@ h1, h2, h3 {
     background-color: #f0f0f0;
     cursor: default;
     border: 1px dashed #ccc;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .day-number {
@@ -193,6 +210,7 @@ h1, h2, h3 {
     font-size: 0.8em;
     color: #666;
     margin-top: 5px;
+    transition: color 0.3s ease;
 }
 
 .day.selected .code-count {
@@ -217,6 +235,7 @@ h1, h2, h3 {
     margin-top: 20px;
     border-top: 1px solid #eee;
     padding-top: 15px;
+    transition: border-color 0.3s ease;
 }
 
 /* Styles for daily inputs */
@@ -227,11 +246,14 @@ h1, h2, h3 {
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
+    transition: border-color 0.3s ease;
 }
 
 .daily-inputs label {
     font-weight: bold;
     align-self: center;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
 .daily-inputs input[type="text"],
@@ -242,6 +264,9 @@ h1, h2, h3 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Style for the Legajo display span */
@@ -252,6 +277,7 @@ h1, h2, h3 {
     background-color: #e9e9e9;
     color: #555;
     font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 
@@ -267,8 +293,9 @@ h1, h2, h3 {
     padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.3s ease;
     font-size: 0.9em;
+    color: #333;
 }
 
 .code-option:hover {
@@ -291,6 +318,9 @@ h1, h2, h3 {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 button {
@@ -330,6 +360,8 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #daily-codes-list li .remove-code {
@@ -360,6 +392,143 @@ button:hover {
 #export-excel:hover {
     background-color: #0056b3;
 }
+
+/* Theme Toggle Styles */
+.theme-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle-container label {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333;
+}
+
+body.dark-mode .container,
+body.dark-mode .login-container {
+    background-color: #555;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode label,
+body.dark-mode #current-month-year,
+body.dark-mode .day,
+body.dark-mode .month-cell,
+body.dark-mode .day-header,
+body.dark-mode .daily-inputs .display-value,
+body.dark-mode .code-option,
+body.dark-mode #daily-codes-list li,
+body.dark-mode .daily-inputs input[type="text"],
+body.dark-mode .daily-inputs input[type="time"],
+body.dark-mode .daily-inputs input[type="number"],
+body.dark-mode #new-code-input,
+body.dark-mode .login-container h2,
+body.dark-mode .login-container input[type="text"] {
+    color: #eee;
+}
+
+body.dark-mode .calendar-section,
+body.dark-mode .code-entry-section,
+body.dark-mode .export-section {
+    background-color: #444;
+    border-color: #666;
+}
+
+body.dark-mode #month-selector-container {
+    background-color: #666;
+    border-color: #777;
+}
+
+body.dark-mode .month-cell {
+    background-color: #777;
+    border-color: #888;
+}
+
+body.dark-mode .month-cell:hover {
+    background-color: #888;
+}
+
+body.dark-mode .month-cell.selected-month {
+    background-color: #4CAF50; /* Keep green for selected month */
+    border-color: #4CAF50;
+}
+
+body.dark-mode .day {
+    background-color: #777;
+    border-color: #888;
+}
+
+body.dark-mode .day:hover {
+    background-color: #888;
+}
+
+body.dark-mode .day.selected {
+    background-color: #4CAF50; /* Keep green for selected day */
+    border-color: #4CAF50;
+}
+
+body.dark-mode .day.empty {
+    background-color: #666;
+    border-color: #777;
+}
+
+body.dark-mode .code-count {
+    color: #bbb;
+}
+
+body.dark-mode .daily-inputs input[type="text"],
+body.dark-mode .daily-inputs input[type="time"],
+body.dark-mode .daily-inputs input[type="number"],
+body.dark-mode #new-code-input,
+body.dark-mode .login-container input[type="text"] {
+    background-color: #666;
+    border-color: #888;
+}
+
+body.dark-mode .daily-inputs .display-value {
+    background-color: #666;
+    border-color: #888;
+}
+
+body.dark-mode .code-option {
+    background-color: #777;
+}
+
+body.dark-mode .code-option:hover {
+    background-color: #888;
+}
+
+body.dark-mode .code-option.selected {
+    background-color: #2196F3; /* Keep blue for selected code */
+}
+
+body.dark-mode #daily-codes-list li {
+    background-color: #666;
+}
+
+body.dark-mode .day.weekend {
+    background-color: #a0522d; /* Darker orange for weekend in dark mode */
+    border-color: #b36b3f;
+}
+
+body.dark-mode .day.weekend.selected {
+    background-color: #ff9800; /* Keep bright orange when selected */
+    border-color: #f57c00;
+}
+
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
@@ -410,5 +579,10 @@ button:hover {
     }
     .nav-button {
         margin: 5px; /* Más espacio entre botones */
+    }
+    .theme-toggle-container {
+        position: static; /* Adjust position for smaller screens */
+        margin-bottom: 20px;
+        justify-content: center;
     }
 }

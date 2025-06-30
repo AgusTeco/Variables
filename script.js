@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const monthGrid = document.getElementById('month-grid');
     // --- FIN NUEVAS REFERENCIAS ---
 
+    // --- NUEVA REFERENCIA PARA EL TOGGLE DE TEMA ---
+    const themeToggle = document.getElementById('theme-toggle');
+    // --- FIN NUEVA REFERENCIA ---
+
     let currentSelectedDate = null;
     let selectedMonthYearDate = new Date(); // Objeto Date para el mes y año que se muestra en el selector
     let currentUser = localStorage.getItem('currentUser');
@@ -42,6 +46,27 @@ document.addEventListener('DOMContentLoaded', () => {
         'AR0488 Adicional manejo',
         'AR0484 Adicional ascenso a torre'
     ]);
+
+    // --- Theme Toggle Functions ---
+    function applyTheme(isDarkMode) {
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    }
+
+    function loadThemePreference() {
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        themeToggle.checked = isDarkMode;
+        applyTheme(isDarkMode);
+    }
+
+    function toggleTheme() {
+        const isDarkMode = themeToggle.checked;
+        localStorage.setItem('darkMode', isDarkMode);
+        applyTheme(isDarkMode);
+    }
 
     // --- Login Functions ---
     function checkLogin() {
@@ -77,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderMonthSelector(); // Renderiza el selector de meses
         renderCalendar(selectedMonthYearDate.getFullYear(), selectedMonthYearDate.getMonth()); // Renderiza el calendario de días del mes actual
         renderCodeOptions();
+        loadThemePreference(); // Load theme preference on app initialization
     }
 
     // --- NUEVAS FUNCIONES PARA EL SELECTOR DE MES ---
@@ -140,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dailyCodesList.innerHTML = '';
         horaIniInput.value = '';
         horaFinInput.value = '';
-        importeInput.value = '';
+        importeInput.value = ''; // Limpiar el importe también
 
         renderCodeOptions(); // Refresh code options (no daily codes selected yet)
     }
@@ -252,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         horaIniInput.value = dataForSelectedDay.horaIni || '';
         horaFinInput.value = dataForSelectedDay.horaFin || '';
         importeInput.value = dataForSelectedDay.importe || '';
+        
 
         renderDailyCodes();
         renderCodeOptions();
@@ -377,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
             legajo: currentUser,
             horaIni: horaIniInput.value.trim(),
             horaFin: horaFinInput.value.trim(),
-            importe: parseFloat(importeInput.value) || 0,
+            importe: importeInput.value.trim(), // Save importe
             codes: (dailyData[currentSelectedDate] && dailyData[currentSelectedDate].codes) || []
         };
         localStorage.setItem('dailyData', JSON.stringify(dailyData));
@@ -438,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Hora Ini (Tarde)': '',
                         'Hora Fin (Tarde)': '',
                         'Cantidad': 1,
-                        'Importe': '',
+                        'Importe': dayInfo.importe || '', // Include importe here
                         'Justificacion': descriptionPart
                     };
                     dataForMonth.push(row);
@@ -498,6 +525,10 @@ document.addEventListener('DOMContentLoaded', () => {
     nextYearButton.addEventListener('click', () => navigateYear(1));
     // --- FIN NUEVOS EVENT LISTENERS ---
 
+    // --- EVENT LISTENER PARA EL TOGGLE DE TEMA ---
+    themeToggle.addEventListener('change', toggleTheme);
+    // --- FIN EVENT LISTENER ---
+
     addCodeButton.addEventListener('click', addCode);
     newCodeInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -507,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     horaIniInput.addEventListener('change', saveDailyData);
     horaFinInput.addEventListener('change', saveDailyData);
-    importeInput.addEventListener('change', saveDailyData);
+    importeInput.addEventListener('change', saveDailyData); // Add event listener for importe
 
     saveDailyCodesButton.addEventListener('click', () => {
         if (currentSelectedDate) {
