@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainApp = document.getElementById('main-app');
 
     const calendarEl = document.getElementById('calendar');
-    // REMOVIDO: const monthSelect = document.getElementById('month-select');
     const selectedDateEl = document.getElementById('selected-date');
     const codesForDateDisplay = document.getElementById('codes-for-date-display');
     const codeOptionsEl = document.getElementById('code-options');
@@ -128,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Actualiza la variable selectedMonth (formato YYYY-MM para la exportación)
         const newSelectedMonthString = `${year}-${String(month + 1).padStart(2, '0')}`;
         // IMPORTANTE: actualiza la variable `selectedMonth` que usa `exportToExcel`
-        selectedMonth = newSelectedMonthString; 
+        // (Nota: `selectedMonth` no está definida globalmente, se usa dentro de `exportToExcel` con el objeto `selectedMonthYearDate`.)
+        // Si necesitaras esta variable globalmente fuera de exportToExcel, deberías definirla.
 
         // Renderiza el calendario de días para el nuevo mes
         renderCalendar(year, month);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarEl.appendChild(dayHeader);
         });
 
-        const firstDayOfWeek = firstDayOfMonth.getDay();
+        const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 (Domingo) a 6 (Sábado)
         for (let i = 0; i < firstDayOfWeek; i++) {
             const emptyDay = document.createElement('div');
             emptyDay.classList.add('day', 'empty');
@@ -198,6 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const dayEl = document.createElement('div');
             dayEl.classList.add('day');
             dayEl.dataset.date = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+
+            // Determinar si es sábado (6) o domingo (0)
+            const currentDayOfWeek = new Date(year, month, i).getDay();
+            if (currentDayOfWeek === 0 || currentDayOfWeek === 6) {
+                dayEl.classList.add('weekend'); // Agrega la clase 'weekend'
+            }
 
             const dayNumberEl = document.createElement('div');
             dayNumberEl.classList.add('day-number');
@@ -226,17 +232,17 @@ document.addEventListener('DOMContentLoaded', () => {
             saveDailyData();
         }
 
-        if (currentSelectedDate) {
-            const prevSelectedEl = document.querySelector(`.day[data-date="${currentSelectedDate}"]`);
-            if (prevSelectedEl) {
-                prevSelectedEl.classList.remove('selected');
-            }
+        // Remover la clase 'selected' del día previamente seleccionado
+        const prevSelectedEl = document.querySelector(`.day.selected`);
+        if (prevSelectedEl) {
+            prevSelectedEl.classList.remove('selected');
         }
 
         currentSelectedDate = date;
         selectedDateEl.textContent = date;
         codesForDateDisplay.textContent = date;
 
+        // Añadir la clase 'selected' al nuevo día seleccionado
         const newSelectedEl = document.querySelector(`.day[data-date="${currentSelectedDate}"]`);
         if (newSelectedEl) {
             newSelectedEl.classList.add('selected');
