@@ -10,7 +10,7 @@
     <div id="login-screen" class="login-container">
         <h2>Ingresa tu Número de Legajo </h2>
         <input type="text" id="username-input" placeholder="Solo Números">
-        <button id="login-button" class="primary-button">Ingresar</button> <!-- Added primary-button class -->
+        <button id="login-button">Ingresar</button>
     </div>
     <div id="main-app" class="container hidden">
         <div class="theme-toggle-container">
@@ -27,18 +27,18 @@
                 <span id="current-month-year"></span>
                 <button id="next-month-button" class="nav-button">&gt;</button>
                 <button id="next-year-button" class="nav-button">&gt;&gt;</button>
-                <div id="month-grid">
-                    </div>
             </div>
-            <div id="calendar"></div>
+            <div id="month-grid">
+                </div>
+            <div id="calendar" class="calendar">
+                </div>
         </div>
 
         <div class="code-entry-section">
-            <h2>Día Seleccionado: <span id="selected-date">Ninguno</span></h2>
-
-            <div class="daily-inputs">
-                <label for="legajo-display">Legajo:</label>
-                <span id="legajo-display" class="display-value"></span> 
+            <h2>Legajo: <span id="legajo-display"></span></h2>
+            <h3>Día Seleccionado: <span id="selected-date">Ninguno</span></h3>
+            
+            <div class="input-fields">
                 <label for="hora-ini-input">Hora Inicio:</label>
                 <input type="time" id="hora-ini-input">
                 <label for="hora-fin-input">Hora Fin:</label>
@@ -53,7 +53,7 @@
                     </div>
                 <div class="add-new-code">
                     <input type="text" id="new-code-input" placeholder="Nuevo Código (Ej: ARXXXX Descripción)">
-                    <button id="add-code-button" class="primary-button">Agregar Nuevo Código</button> <!-- Added primary-button class -->
+                    <button id="add-code-button">Agregar Nuevo Código</button>
                 </div>
             </div>
 
@@ -61,13 +61,13 @@
                 <h3>Códigos para el día <span id="codes-for-date-display"></span>:</h3>
                 <ul id="daily-codes-list">
                     </ul>
-                <button id="save-daily-codes" class="success-button">Guardar Códigos del Día</button> <!-- Added success-button class -->
+                <button id="save-daily-codes">Guardar Códigos del Día</button>
             </div>
         </div>
 
         <div class="export-section">
             <h2>Resumen Mensual</h2>
-            <button id="export-excel" class="primary-button">Exportar a Excel (Mes Actual)</button> <!-- Added primary-button class -->
+            <button id="export-excel">Exportar a Excel (Mes Actual)</button>
         </div>
     </div>
 
